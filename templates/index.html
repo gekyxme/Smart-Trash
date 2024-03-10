@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Trash</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <style>
+    body {
+    /* background-image: url('background.svg'); */
+    background-color: beige;
+    }
+
+    h1 {
+      color: #38b000; /* Green heading */
+      margin-top: 50px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .form-control {
+      border-color: #38b000; /* Green border for file input */
+    }
+
+    .btn-primary {
+      background-color: #38b000; /* Green button */
+      border-color: #38b000;
+    }
+
+    .btn-primary:hover {
+      background-color: #2e8b00; /* Darker green on hover */
+      border-color: #2e8b00;
+    }
+
+    .prediction {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="text-center">Smart <span class="prediction">Trash</span></h1>
+
+  <form class="p-3 text-center" action='/', method="post" enctype="multipart/form-data">
+    <label for="imagefile" class="text-center p-2">Upload a picture of your waste</label><br>
+    <input class="form-control" type="file" id="imagefile" name="imagefile" required>
+    <br>
+    <input class="btn btn-primary mt-3" type="submit" value="Classify Waste">
+  </form>
+
+  {% if prediction %}
+    <p class="text-center">Looks like it's mostly <span class="prediction">{{ prediction }}</span>.</p>
+    <p class="text-center">Recycle it responsibly!</p>
+  {% endif %}
+</body>
+</html>
