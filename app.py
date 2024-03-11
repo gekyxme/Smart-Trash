@@ -15,6 +15,5 @@ def predict():
     predicted_class = predict_external_image(imagepath, model)
     return template('index.html', prediction=predicted_class)
 
-
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

@@ -1,3 +1,7 @@
 /dataset
 
 /images
+
+/.vscode
+
+/__pycache__
