@@ -1,0 +1,66 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #262727; 
+  }
+  
+  h1, h3 {
+    color: #9b53e2;
+    text-align: center;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .result {
+    text-align: center;
+    margin-top: 20px;
+    color:antiquewhite;
+  }
+  
+  .form-control {
+    margin: 0 auto;
+    width: 50%;
+    border-color: #9b53e2;
+  }
+  
+  .btn-primary {
+    background-color: #9b53e2;
+    border-color: #9b53e2;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #7a48af;
+    border-color: #7a48af;
+  }
+  
+  .prediction {
+    font-weight: bold;
+    color: #9b53e2;
+  }
+  
+  .waste-container {
+    background-color: #262727;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(183,171,153,255);
+  }
+  
+  .waste-container h3 {
+    color: #9b53e2;
+  }
+  
+  .waste-container p {
+    color: antiquewhite;
+    text-align: center;
+    line-height: 1.5;
+  }
+  
+  .waste-management-info {
+    margin-bottom: 20px;
+  }
+  
+  

@@ -3,69 +3,11 @@
 <head>
   <title>Smart Trash</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      /* background-color: #f0f0f0; */
-      background-color: beige;  
-    }
-
-    h1, h3 {
-      color: #4CAF50; /* Green heading */
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .form-control {
-      border-color: #4CAF50; /* Green border for file input */
-    }
-
-    .btn-primary {
-      background-color: #4CAF50; /* Green button */
-      border-color: #4CAF50;
-      font-weight: bold;
-      padding: 10px 20px;
-    }
-
-    .btn-primary:hover {
-      background-color: #2e8b00; /* Darker green on hover */
-      border-color: #2e8b00;
-    }
-
-    .prediction {
-      font-weight: bold;
-      color: #4CAF50; /* Green prediction text */
-    }
-
-    .waste-container {
-      background-color: #fff;
-      margin-top: 50px;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .waste-container h3 {
-      color: #4CAF50; /* Green waste type */
-    }
-
-    .waste-container p {
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    .waste-management-info {
-      margin-bottom: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
-  <h1 class="text-center">Smart <span class="prediction">Trash</span></h1>
+  <h1 class="text-center"> <b> Smart Trash </b> </h1>
 
   <form class="p-3 text-center" action='/', method="post" enctype="multipart/form-data">
     <label for="imagefile" class="text-center p-2">Upload a picture of your waste</label><br>
@@ -75,47 +17,48 @@
   </form>
 
   {% if prediction %}
-    <p class="text-center">Looks like it's mostly <span class="prediction">{{ prediction }}</span>.</p>
+    <p class="result">Looks like it's mostly <span class="prediction">{{ prediction }}</span>.</p>
+    <div class="waste-container">
+      <div class="waste-management-info">
+  
+        {% if prediction == 'plastic' %}
+          <h3>Plastic</h3>
+          <p><strong>Management:</strong> Reduce plastic waste by using reusable bags, bottles, and containers.</p>
+          <p><strong>Disposal:</strong> Recycle plastic containers with the appropriate recycling symbols through local recycling programs. Some types of plastic, like plastic bags, may need to be returned to grocery stores for recycling.</p>
+        {% endif %}
+  
+        {% if prediction == 'cardboard' %}
+          <h3>Cardboard</h3>
+          <p><strong>Management:</strong> Flatten cardboard boxes to save space. Consider reusing cardboard boxes for storage or shipping.</p>
+          <p><strong>Disposal:</strong> Recycle cardboard through local recycling programs or drop-off locations.</p>
+        {% endif %}
+  
+        {% if prediction == 'glass' %}
+          <h3>Glass</h3>
+          <p><strong>Management:</strong> Rinse glass containers to remove any food residue before recycling.</p>
+          <p><strong>Disposal:</strong> Recycle glass bottles and jars through local recycling programs. Some areas also accept glass at recycling drop-off centers.</p>
+        {% endif %}
+  
+        {% if prediction == 'metal' %}
+          <h3>Metal</h3>
+          <p><strong>Management:</strong> Separate metal cans and containers from other waste.</p>
+          <p><strong>Disposal:</strong> Recycle metal cans, aluminum foil, and other metal items through local recycling programs or scrap metal facilities.</p>
+        {% endif %}
+  
+        {% if prediction == 'paper' %}
+          <h3>Paper</h3>
+          <p><strong>Management:</strong> Use both sides of paper when printing or writing. Avoid unnecessary printing.</p>
+          <p><strong>Disposal:</strong> Recycle paper through local recycling programs. Shredded paper can also be recycled but may need special handling.</p>
+        {% endif %}
+  
+        {% if prediction == 'trash' %}
+          <h3>Trash</h3>
+          <p><strong>Management:</strong> Consider reducing waste by composting food scraps and yard waste.</p>
+          <p><strong>Disposal:</strong> Place non-recyclable and non-compostable waste in the trash. Consider using a waste-to-energy facility if available.</p>
+        {% endif %}
   {% endif %}
 
-  <div class="waste-container">
-    <div class="waste-management-info">
-
-      {% if prediction == 'plastic' %}
-        <h3>Plastic</h3>
-        <p><strong>Management:</strong> Reduce plastic waste by using reusable bags, bottles, and containers.</p>
-        <p><strong>Disposal:</strong> Recycle plastic containers with the appropriate recycling symbols through local recycling programs. Some types of plastic, like plastic bags, may need to be returned to grocery stores for recycling.</p>
-      {% endif %}
-
-      {% if prediction == 'cardboard' %}
-        <h3>Cardboard</h3>
-        <p><strong>Management:</strong> Flatten cardboard boxes to save space. Consider reusing cardboard boxes for storage or shipping.</p>
-        <p><strong>Disposal:</strong> Recycle cardboard through local recycling programs or drop-off locations.</p>
-      {% endif %}
-
-      {% if prediction == 'glass' %}
-        <h3>Glass</h3>
-        <p><strong>Management:</strong> Rinse glass containers to remove any food residue before recycling.</p>
-        <p><strong>Disposal:</strong> Recycle glass bottles and jars through local recycling programs. Some areas also accept glass at recycling drop-off centers.</p>
-      {% endif %}
-
-      {% if prediction == 'metal' %}
-        <h3>Metal</h3>
-        <p><strong>Management:</strong> Separate metal cans and containers from other waste.</p>
-        <p><strong>Disposal:</strong> Recycle metal cans, aluminum foil, and other metal items through local recycling programs or scrap metal facilities.</p>
-      {% endif %}
-
-      {% if prediction == 'paper' %}
-        <h3>Paper</h3>
-        <p><strong>Management:</strong> Use both sides of paper when printing or writing. Avoid unnecessary printing.</p>
-        <p><strong>Disposal:</strong> Recycle paper through local recycling programs. Shredded paper can also be recycled but may need special handling.</p>
-      {% endif %}
-
-      {% if prediction == 'trash' %}
-        <h3>Trash</h3>
-        <p><strong>Management:</strong> Consider reducing waste by composting food scraps and yard waste.</p>
-        <p><strong>Disposal:</strong> Place non-recyclable and non-compostable waste in the trash. Consider using a waste-to-energy facility if available.</p>
-      {% endif %}
+  
 
 </div>
 </div>
