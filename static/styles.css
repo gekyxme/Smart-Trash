@@ -1,11 +1,17 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #262727; 
+    padding: 200pxm;
   }
   
   h1, h3 {
     color: #9b53e2;
     text-align: center;
+  }
+
+  .text-header {
+    text-align: center;
+    margin-top: 25px;
   }
   
   .text-center {
@@ -43,7 +49,8 @@ body {
   
   .waste-container {
     background-color: #262727;
-    margin-top: 20px;
+    margin: 200px;
+    margin-top: -2px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(183,171,153,255);
@@ -63,4 +70,19 @@ body {
     margin-bottom: 20px;
   }
   
-  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: antiquewhite;
+    color: #262727;
+    text-align: center;
+    height: 50px; /* Adjust height as needed */
+    line-height: 50px; /* Same as height for vertical centering */
+ }
+
+ .footer-purple {
+  font-weight: bold;
+  color: #9b53e2;
+}
