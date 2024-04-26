@@ -10,4 +10,4 @@ Once all dependencies are installed, you can run the application using:
 
 ```python app.py```
 
-Now the Flask app is now up and running.
+The Flask app is now up and running.
